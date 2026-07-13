@@ -12,6 +12,12 @@ function Contacto () {
 
     const form = useRef();
 
+    const cleanForm = () => {
+        if (form.current) {
+            form.current.reset();
+        }
+    };
+
     const sendEmail = (e) => {
         e.preventDefault();
 
@@ -24,6 +30,7 @@ function Contacto () {
             )
             .then(
                 alert("Correo enviado correctamente"),
+                cleanForm()
             )
             .catch((error) => {
                 console.error("Error al enviar el correo:", error);
